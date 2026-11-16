@@ -1,0 +1,19 @@
+# Render Blueprint — EasyEvents web (SPA)
+# Dashboard: New → Blueprint → connect this repo
+# Set build-time env vars: EXPO_PUBLIC_SUPABASE_URL, EXPO_PUBLIC_SUPABASE_ANON_KEY
+
+services:
+  - type: web
+    name: easyevents-web
+    runtime: static
+    buildCommand: npm ci && npm run build:web
+    staticPublishPath: dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: EXPO_PUBLIC_SUPABASE_URL
+        sync: false
+      - key: EXPO_PUBLIC_SUPABASE_ANON_KEY
+        sync: false
